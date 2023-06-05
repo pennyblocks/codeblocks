@@ -74,7 +74,7 @@ contract Validators is Params, SafeSend, IValidators {
         _;
     }
 
-    function initialize(address[] memory _validators, address[] memory _managers, address _admin)
+    function initialize(address[] calldata _validators, address[] calldata _managers, address _admin)
     external
     onlyNotInitialized {
         require(_validators.length > 0 && _validators.length == _managers.length, "Invalid params");
@@ -215,7 +215,7 @@ contract Validators is Params, SafeSend, IValidators {
     }
 
 
-    function updateActiveValidatorSet(address[] memory newSet, uint256 epoch)
+    function updateActiveValidatorSet(address[] calldata newSet, uint256 epoch)
     external
         // #if Mainnet
     onlyMiner
